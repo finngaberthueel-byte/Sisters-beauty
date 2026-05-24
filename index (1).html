@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sisters Beauty by Franca & Lella – Wetzikon</title>
+<meta name="description" content="Ihr Beauty-Studio in Wetzikon – Nagelmodellage, Kosmetik, Haarentfernung, Make-up & mehr. Jetzt Termin buchen."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+:root {
+  --wine: #2D1B2E;
+  --terra: #C4622D;
+  --cream: #F7F2EA;
+  --gold: #C9A84C;
+  --sage: #5A6B52;
+  --warm-white: #FDFAF4;
+}
+body { font-family: 'Cormorant Garamond', Georgia, serif; background: var(--warm-white); color: var(--wine); overflow-x: hidden; }
+.sans { font-family: 'Montserrat', sans-serif; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6%; height: 64px;
+  transition: background 0.4s, border 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(253,250,244,0.96);
+  border-bottom: 1px solid rgba(45,27,46,0.1);
+  backdrop-filter: blur(12px);
+}
+.nav-logo-main { font-size: 18px; font-weight: 600; letter-spacing: 1px; color: var(--wine); }
+.nav-logo-sub { font-family: 'Montserrat',sans-serif; font-size: 9px; letter-spacing: 3px; color: var(--terra); text-transform: uppercase; margin-top: 2px; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-link {
+  font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--wine); text-decoration: none; cursor: pointer;
+  background: none; border: none; transition: color 0.2s;
+}
+.nav-link:hover { color: var(--terra); }
+.nav-cta {
+  font-family: 'Montserrat',sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: #fff; background: var(--terra); padding: 10px 22px;
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: #b0541f; }
+.menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--wine); padding: 4px; }
+
+/* MOBILE MENU */
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+  background: var(--warm-white); border-bottom: 1px solid rgba(45,27,46,0.1);
+  padding: 28px 6%; flex-direction: column; gap: 24px;
+}
+.mobile-menu.open { display: flex; }
+
+/* FLOAT BUTTON */
+.float-cta {
+  display: none; position: fixed; bottom: 24px; right: 20px; z-index: 999;
+  background: var(--terra); color: #fff; border-radius: 50px; padding: 14px 24px;
+  align-items: center; gap: 10px; text-decoration: none;
+  font-family: 'Montserrat',sans-serif; font-weight: 600; font-size: 14px;
+  box-shadow: 0 8px 28px rgba(196,98,45,0.4); transition: background 0.2s;
+}
+.float-cta:hover { background: #b0541f; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 0 6% 72px;
+  position: relative; background: var(--wine); overflow: hidden;
+}
+.hero-bg-text {
+  position: absolute; top: 8%; left: 4%; right: 0; pointer-events: none; user-select: none;
+  font-size: clamp(100px, 22vw, 220px); font-weight: 700; line-height: 0.85;
+  color: rgba(247,242,234,0.04); letter-spacing: -4px;
+}
+.hero-top-line { position: absolute; top: 64px; left: 6%; right: 6%; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+.hero-label {
+  position: absolute; top: 88px; left: 6%;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-label-line { width: 32px; height: 1px; background: var(--gold); display: inline-block; }
+.hero-label-text { font-family: 'Montserrat',sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.hero-content { position: relative; z-index: 2; max-width: 1100px; }
+.hero-title { font-size: clamp(64px, 11vw, 130px); font-weight: 300; line-height: 1.05; color: var(--cream); letter-spacing: -2px; font-style: italic; }
+.hero-title strong { font-style: normal; font-weight: 700; color: var(--terra); }
+.hero-sub { font-family: 'Montserrat',sans-serif; font-weight: 300; letter-spacing: 1px; color: rgba(247,242,234,0.55); font-size: clamp(13px, 1.8vw, 18px); margin-top: 20px; max-width: 540px; line-height: 1.7; }
+.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+.btn-book {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--terra); color: #fff; padding: 18px 38px; text-decoration: none;
+  font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.25s, transform 0.2s;
+}
+.btn-book:hover { background: #b0541f; transform: translateY(-2px); }
+.btn-call-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid rgba(247,242,234,0.4); color: var(--cream);
+  padding: 17px 36px; text-decoration: none;
+  font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; background: transparent; transition: border-color 0.2s, transform 0.2s;
+}
+.btn-call-outline:hover { border-color: var(--cream); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 48px; margin-top: 72px; padding-top: 32px; border-top: 1px solid rgba(247,242,234,0.12); position: relative; z-index: 2; flex-wrap: wrap; }
+.stat-val { font-size: clamp(28px, 4vw, 42px); font-weight: 700; color: var(--cream); line-height: 1; }
+.stat-label { font-family: 'Montserrat',sans-serif; font-size: 10px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-top: 6px; }
+
+/* SECTIONS */
+section { padding: 100px 6%; }
+.line-accent { display: block; width: 48px; height: 2px; background: var(--gold); margin-bottom: 24px; }
+.section-eyebrow { font-family: 'Montserrat',sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--terra); text-transform: uppercase; display: block; margin-bottom: 12px; }
+.section-title { font-size: clamp(36px, 5vw, 64px); font-weight: 300; line-height: 1; font-style: italic; margin-bottom: 0; }
+.section-title strong { font-style: normal; font-weight: 700; }
+
+/* SERVICES */
+#services { background: var(--warm-white); }
+.services-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 64px; flex-wrap: wrap; gap: 20px; }
+.service-row {
+  display: flex; align-items: center; padding: 26px 0;
+  border-top: 1px solid rgba(45,27,46,0.12);
+  transition: background 0.25s; position: relative; cursor: default;
+}
+.service-row:last-child { border-bottom: 1px solid rgba(45,27,46,0.12); }
+.service-row:hover { background: rgba(196,98,45,0.04); }
+.service-num { font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 600; color: var(--terra); letter-spacing: 1px; width: 44px; flex-shrink: 0; }
+.service-name { flex: 1; font-size: clamp(20px, 3vw, 30px); font-weight: 400; padding-right: 16px; }
+.service-tag { font-family: 'Montserrat',sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; border: 1px solid var(--sage); color: var(--sage); flex-shrink: 0; }
+
+/* ABOUT */
+#about { background: var(--wine); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; }
+.about-eyebrow { font-family: 'Montserrat',sans-serif; font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 24px; }
+.about-title { font-size: clamp(32px, 4.5vw, 58px); font-weight: 300; line-height: 1.1; color: var(--cream); margin-bottom: 28px; font-style: italic; }
+.about-title strong { font-style: normal; font-weight: 700; color: var(--terra); }
+.about-text { color: rgba(247,242,234,0.65); line-height: 1.9; font-size: 17px; margin-bottom: 20px; font-weight: 300; }
+.about-badges { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
+.about-badge { font-family: 'Montserrat',sans-serif; font-size: 9px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 8px 16px; }
+.about-visual { position: relative; }
+.about-placeholder {
+  background: rgba(247,242,234,0.05); border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 2px; height: 420px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+}
+.about-star { font-size: 80px; opacity: 0.2; color: var(--gold); }
+.about-name { color: var(--gold); font-style: italic; font-size: 22px; opacity: 0.7; }
+.corner { position: absolute; width: 24px; height: 24px; }
+.corner-tl { top: -8px; left: -8px; border-top: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.corner-tr { top: -8px; right: -8px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+.corner-bl { bottom: -8px; left: -8px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
+.corner-br { bottom: -8px; right: -8px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
+
+/* HOURS */
+#hours { background: var(--terra); padding: 90px 6%; }
+.hours-inner { max-width: 700px; margin: 0 auto; }
+.hours-eyebrow { font-family: 'Montserrat',sans-serif; font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.6); text-transform: uppercase; display: block; margin-bottom: 16px; }
+.hours-title { font-size: clamp(32px, 5vw, 56px); font-weight: 300; color: #fff; margin-bottom: 48px; font-style: italic; }
+.hours-title strong { font-style: normal; }
+.hour-row { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid rgba(247,242,234,0.15); }
+.hour-day { color: #fff; font-size: 20px; font-weight: 300; }
+.hour-day.closed { color: rgba(255,255,255,0.35); }
+.hour-time { font-family: 'Montserrat',sans-serif; color: #fff; font-size: 16px; font-weight: 500; letter-spacing: 1px; }
+.hour-time.closed { color: rgba(255,255,255,0.35); }
+.hours-note { font-family: 'Montserrat',sans-serif; margin-top: 24px; font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 1px; }
+.btn-book-white {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; color: var(--terra); padding: 16px 32px; text-decoration: none;
+  font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; margin-top: 48px;
+  transition: transform 0.2s;
+}
+.btn-book-white:hover { transform: translateY(-2px); }
+
+/* CONTACT */
+#contact { background: var(--warm-white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; max-width: 1000px; }
+.contact-icon { margin-bottom: 20px; }
+.contact-label { font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--wine); margin-bottom: 20px; display: block; }
+.contact-text { color: #7a6259; line-height: 1.8; margin-bottom: 16px; font-size: 17px; }
+.contact-link-maps {
+  font-family: 'Montserrat',sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--terra); text-decoration: none; border-bottom: 1px solid var(--terra); padding-bottom: 2px;
+}
+.contact-phone-label { font-family: 'Montserrat',sans-serif; font-size: 11px; color: #aaa; letter-spacing: 1px; margin-bottom: 6px; }
+.contact-phone { display: block; color: var(--wine); font-weight: 600; font-size: 20px; text-decoration: none; margin-bottom: 20px; }
+.contact-phone:last-child { margin-bottom: 0; }
+
+/* SOCIAL */
+#social { background: var(--sage); padding: 60px 6%; text-align: center; }
+.social-title { font-size: clamp(22px, 3vw, 36px); font-style: italic; color: var(--cream); margin-bottom: 28px; font-weight: 300; }
+.social-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-social {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid rgba(247,242,234,0.5); color: var(--cream);
+  padding: 13px 28px; text-decoration: none;
+  font-family: 'Montserrat',sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 2.5px; text-transform: uppercase; transition: background 0.2s, border-color 0.2s;
+}
+.btn-social:hover { background: rgba(247,242,234,0.12); border-color: var(--cream); }
+
+/* FOOTER */
+footer { background: var(--wine); padding: 52px 6% 28px; }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(247,242,234,0.1); }
+.footer-brand { font-size: 20px; font-weight: 600; color: var(--cream); margin-bottom: 4px; }
+.footer-sub { font-family: 'Montserrat',sans-serif; font-size: 9px; letter-spacing: 3px; color: var(--terra); text-transform: uppercase; margin-bottom: 16px; }
+.footer-addr { font-family: 'Montserrat',sans-serif; font-size: 13px; color: rgba(247,242,234,0.45); line-height: 1.8; }
+.footer-heading { font-family: 'Montserrat',sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; display: block; }
+.footer-link { font-family: 'Montserrat',sans-serif; font-size: 14px; color: rgba(247,242,234,0.5); text-decoration: none; display: block; margin-bottom: 12px; cursor: pointer; background: none; border: none; text-align: left; transition: color 0.2s; }
+.footer-link:hover { color: var(--cream); }
+.footer-copy { font-family: 'Montserrat',sans-serif; text-align: center; font-size: 11px; color: rgba(247,242,234,0.25); letter-spacing: 1px; }
+
+/* SCROLL ANIMATION */
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.85s cubic-bezier(.22,1,.36,1), transform 0.85s cubic-bezier(.22,1,.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+.reveal-d5 { transition-delay: 0.4s; }
+
+/* SVG icons inline */
+.icon { display: inline-block; vertical-align: middle; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .float-cta { display: flex !important; }
+  .nav-links { display: none; }
+  .menu-btn { display: flex; }
+  .hero-title { font-size: clamp(48px, 12vw, 90px) !important; line-height: 1.08 !important; }
+  .hero-stats { gap: 24px; }
+  .hero-btns { flex-direction: column; }
+  .btn-call-outline.desktop-only { display: none; }
+  .about-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .footer-grid { grid-template-columns: 1fr !important; }
+  section { padding: 72px 5%; }
+  .services-header { flex-direction: column; align-items: flex-start; }
+  .service-row { padding: 20px 0; gap: 0; }
+  .service-num { width: 36px; font-size: 10px; }
+  .service-name { font-size: 18px !important; padding-right: 12px; }
+  .service-tag { display: none; }
+}
+@media (min-width: 769px) {
+  .mobile-only { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Floating CTA mobile -->
+<a href="tel:+41763308142" class="float-cta">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.56 3.39 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 5.51 5.51l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Anrufen
+</a>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div>
+    <div class="nav-logo-main">Sisters Beauty</div>
+    <div class="nav-logo-sub">by Franca &amp; Lella</div>
+  </div>
+  <div class="nav-links">
+    <button class="nav-link" onclick="scrollTo('services')">Services</button>
+    <button class="nav-link" onclick="scrollTo('about')">Über uns</button>
+    <button class="nav-link" onclick="scrollTo('hours')">Öffnungszeiten</button>
+    <button class="nav-link" onclick="scrollTo('contact')">Kontakt</button>
+    <a href="https://book.calenso.com/sistersbeauty" target="_blank" class="nav-cta">Termin buchen</a>
+  </div>
+  <button class="menu-btn" id="menu-btn" onclick="toggleMenu()" aria-label="Menü öffnen">
+    <svg id="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="nav-link" onclick="scrollTo('services')">Services</button>
+  <button class="nav-link" onclick="scrollTo('about')">Über uns</button>
+  <button class="nav-link" onclick="scrollTo('hours')">Öffnungszeiten</button>
+  <button class="nav-link" onclick="scrollTo('contact')">Kontakt</button>
+  <a href="https://book.calenso.com/sistersbeauty" target="_blank" class="btn-book" style="justify-content:center;text-align:center;">Termin buchen</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">SISTERS<br/>BEAUTY</div>
+  <div class="hero-top-line"></div>
+  <div class="hero-label">
+    <span class="hero-label-line"></span>
+    <span class="hero-label-text">Beauty-Studio · Wetzikon ZH</span>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">Sisters<br/><strong>Beauty</strong></h1>
+    <p class="hero-sub">Nagelmodellage · Kosmetik · Haarentfernung<br/>Make-up &amp; Mehr — auf Deutsch und Italiano.</p>
+    <div class="hero-btns">
+      <a href="https://book.calenso.com/sistersbeauty" target="_blank" class="btn-book">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+        Termin buchen
+      </a>
+      <!-- Desktop: number -->
+      <a href="tel:+41763308142" class="btn-call-outline desktop-only">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.56 3.39 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 5.51 5.51l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +41 76 330 81 42
+      </a>
+      <!-- Mobile: text -->
+      <a href="tel:+41763308142" class="btn-call-outline mobile-only">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.56 3.39 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 5.51 5.51l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Jetzt anrufen
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div><div class="stat-val">810+</div><div class="stat-label">Fans auf Facebook</div></div>
+    <div><div class="stat-val">2</div><div class="stat-label">Inhaberinnen</div></div>
+    <div><div class="stat-val">DE / IT</div><div class="stat-label">Gesprochen</div></div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="reveal services-header">
+    <div>
+      <span class="line-accent"></span>
+      <h2 class="section-title">Unsere<br/><strong>Leistungen</strong></h2>
+    </div>
+    <a href="https://book.calenso.com/sistersbeauty" target="_blank" class="btn-book">
+      Jetzt buchen
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+  <div id="services-list">
+    <div class="service-row reveal reveal-d1">
+      <span class="service-num">01</span>
+      <span class="service-name">Nagelmodellage &amp; Nail Art</span>
+      <span class="service-tag">Nails</span>
+    </div>
+    <div class="service-row reveal reveal-d2">
+      <span class="service-num">02</span>
+      <span class="service-name">Manicure &amp; Pedicure</span>
+      <span class="service-tag">Pflege</span>
+    </div>
+    <div class="service-row reveal reveal-d3">
+      <span class="service-num">03</span>
+      <span class="service-name">Gesichtsbehandlungen</span>
+      <span class="service-tag">Kosmetik</span>
+    </div>
+    <div class="service-row reveal reveal-d4">
+      <span class="service-num">04</span>
+      <span class="service-name">Dauerhafte Haarentfernung</span>
+      <span class="service-tag">IPL / Laser</span>
+    </div>
+    <div class="service-row reveal reveal-d5">
+      <span class="service-num">05</span>
+      <span class="service-name">Waxing &amp; Körperpflege</span>
+      <span class="service-tag">Body</span>
+    </div>
+    <div class="service-row reveal">
+      <span class="service-num">06</span>
+      <span class="service-name">Make-up &amp; Visagistik</span>
+      <span class="service-tag">Beauty</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <span class="about-eyebrow">Über uns</span>
+      <h2 class="about-title">Zwei Schwestern.<br/><strong>Eine Leidenschaft.</strong></h2>
+      <p class="about-text">Franca und Lella führen ihr Studio mit Herzblut, Erfahrung und einem feinen Gespür für Schönheit. In entspannter, moderner Atmosphäre verwöhnen sie ihre Kundinnen von Kopf bis Fuss.</p>
+      <p class="about-text">Als Geschwister teilen sie nicht nur einen Beruf, sondern eine echte Leidenschaft für Beauty und das Wohlbefinden ihrer Gäste – ganz persönlich, auf Deutsch und Italiano.</p>
+      <div class="about-badges">
+        <span class="about-badge">Inhabergeführt</span>
+        <span class="about-badge">Deutsch &amp; Italiano</span>
+        <span class="about-badge">Wetzikon ZH</span>
+      </div>
+    </div>
+    <div class="reveal about-visual" style="transition-delay:0.15s">
+      <div class="about-placeholder">
+        <span class="about-star">✦</span>
+        <span class="about-name">Franca &amp; Lella</span>
+      </div>
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section id="hours">
+  <div class="hours-inner">
+    <div class="reveal">
+      <span class="hours-eyebrow">Wann wir für dich da sind</span>
+      <h2 class="hours-title">Öffnungs<strong>zeiten</strong></h2>
+      <div>
+        <div class="hour-row">
+          <span class="hour-day">Montag – Freitag</span>
+          <span class="hour-time">09:00 – 18:30</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day">Samstag</span>
+          <span class="hour-time">09:00 – 16:00</span>
+        </div>
+        <div class="hour-row">
+          <span class="hour-day closed">Sonntag</span>
+          <span class="hour-time closed">Geschlossen</span>
+        </div>
+      </div>
+      <p class="hours-note">* Platzhalter-Zeiten – bitte kontaktiere uns für aktuelle Öffnungszeiten.</p>
+      <a href="https://book.calenso.com/sistersbeauty" target="_blank" class="btn-book-white">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+        Termin buchen
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <span class="line-accent"></span>
+    <h2 class="section-title" style="margin-bottom:64px">Kontakt &amp; <strong>Anfahrt</strong></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="contact-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4622D" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <span class="contact-label">Adresse</span>
+      <p class="contact-text">Mattackerstrasse 5<br/>8620 Wetzikon, Schweiz</p>
+      <a href="https://www.google.com/maps/search/Mattackerstrasse+5+8620+Wetzikon" target="_blank" class="contact-link-maps">Google Maps →</a>
+    </div>
+    <div class="reveal reveal-d1">
+      <div class="contact-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4622D" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.56 3.39 2 2 0 0 1 3.54 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 5.51 5.51l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <span class="contact-label">Telefon</span>
+      <p class="contact-phone-label">Franca</p>
+      <a href="tel:+41763308142" class="contact-phone">+41 76 330 81 42</a>
+      <p class="contact-phone-label">Lella</p>
+      <a href="tel:+41789188012" class="contact-phone">+41 78 918 80 12</a>
+    </div>
+    <div class="reveal reveal-d2">
+      <div class="contact-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C4622D" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+      </div>
+      <span class="contact-label">Online buchen</span>
+      <p class="contact-text">Buche deinen Wunschtermin rund um die Uhr – einfach und unkompliziert.</p>
+      <a href="https://book.calenso.com/sistersbeauty" target="_blank" class="btn-book">Buchen</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <div class="reveal">
+    <p class="social-title">Folge uns für tägliche Inspiration</p>
+    <div class="social-btns">
+      <a href="https://www.instagram.com/sisters_beauty_by_franca_lella/" target="_blank" class="btn-social">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/@_sistersbeauty" target="_blank" class="btn-social">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        TikTok
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Sisters Beauty</div>
+      <div class="footer-sub">by Franca &amp; Lella</div>
+      <p class="footer-addr">Mattackerstrasse 5<br/>8620 Wetzikon, Schweiz</p>
+    </div>
+    <div>
+      <span class="footer-heading">Navigation</span>
+      <button class="footer-link" onclick="scrollTo('services')">Services</button>
+      <button class="footer-link" onclick="scrollTo('about')">Über uns</button>
+      <button class="footer-link" onclick="scrollTo('hours')">Öffnungszeiten</button>
+      <button class="footer-link" onclick="scrollTo('contact')">Kontakt</button>
+    </div>
+    <div>
+      <span class="footer-heading">Rechtliches</span>
+      <a href="#" class="footer-link">Impressum</a>
+      <a href="#" class="footer-link">Datenschutz</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Sisters Beauty by Franca &amp; Lella · Wetzikon · Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  // NAV scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll to section
+  function scrollTo(id) {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('icon-menu').style.display = 'block';
+    document.getElementById('icon-close').style.display = 'none';
+  }
+
+  // Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const open = menu.classList.toggle('open');
+    document.getElementById('icon-menu').style.display = open ? 'none' : 'block';
+    document.getElementById('icon-close').style.display = open ? 'block' : 'none';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
